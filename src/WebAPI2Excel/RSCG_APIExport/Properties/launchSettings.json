@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DebugWebAPI": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\TestWebAPI\\TestWebAPI.csproj"
+    }
+  }
+}

@@ -35,5 +35,15 @@ jobs:
         cd src
         cd WebAPI2Excel
         dotnet r pack
+
+
+    - name: 'Upload nuget'
+      # if: ${{ github.ref == 'refs/heads/main' }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: NugetWebApiExport_${{github.run_number}}
+        path: src/WebAPI2Excel/RSCG_APIExport/Nuget
+        retention-days: 1
+  
     #- name: Test
     #  run: dotnet test --no-build --verbosity normal

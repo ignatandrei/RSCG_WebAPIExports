@@ -3,6 +3,7 @@
     "restore": "dotnet restore",
     "build": "dotnet r restore && dotnet build --configuration Release",
     "test": "dotnet test --configuration Release",
-    "ci": "dotnet r build && dotnet r test"
+    "ci": "dotnet r build && dotnet r test",
+    "pack":"dotnet pack -c Release  --include-symbols  --include-source -o Nuget"
   }
 }

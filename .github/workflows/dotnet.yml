@@ -47,3 +47,9 @@ jobs:
   
     #- name: Test
     #  run: dotnet test --no-build --verbosity normal
+
+    - name: push to nuget
+      run: |
+        dotnet nuget push src/WebAPI2Excel/Nuget/*.symbols.nupkg --api-key  ${{ secrets.NUGETAPIKEY }} --source https://api.nuget.org/v3/index.json
+        
+    

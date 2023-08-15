@@ -32,7 +32,7 @@
 	</ItemGroup>
 
 	<PropertyGroup>
-		<Version>2023.8.16.1219</Version>
+		<Version>2023.8.16.1254</Version>
 		<Authors>Andrei Ignat</Authors>
 		<Description>Add Excel export to your WebAPI </Description>
 		<Title>RSCG_WebAPIExports</Title>
@@ -55,11 +55,7 @@
 	<PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-	  <NoWarn>1701;1702;</NoWarn>
-	  <WarningsNotAsErrors>NU5128</WarningsNotAsErrors>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	<PropertyGroup >
 	  <NoWarn>1701;1702;</NoWarn>
 	  <WarningsNotAsErrors>NU5128</WarningsNotAsErrors>
 	</PropertyGroup>

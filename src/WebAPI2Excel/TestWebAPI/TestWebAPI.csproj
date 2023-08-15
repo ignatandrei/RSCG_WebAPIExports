@@ -17,11 +17,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RSCG_APIExport\RSCG_APIExport.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
+    <!--<ProjectReference Include="..\RSCG_APIExport\RSCG_APIExport.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />-->
 	  <!--
 	  <ProjectReference Include="..\RSCG_APIExport\RSCG_APIExport.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 	  <PackageReference Include="ArrayToExcel" Version="2.2.2" />
 	  -->
+	  <PackageReference Include="RSCG_WebAPIExports" Version="2023.8.16.1219" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
+	  <!--
+	  <PackageReference Include="RSCG_WebAPIExports" Version="2023.8.16.1219" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
+	  <PackageReference Include="ArrayToExcel" Version="2.2.2" />
+	  -->
+
+
   </ItemGroup>
 	<PropertyGroup>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>

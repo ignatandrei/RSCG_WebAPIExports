@@ -22,9 +22,57 @@
 	<PropertyGroup>
 	  <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 	</PropertyGroup>
-<!--project specific-->
+	<!--nuget specific-->
 	<ItemGroup>
-		<PackageReference Include="rscgutils" Version="2023.502.835" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+		<None Include="..\README.md" Link="README.md" Pack="true" PackagePath="\" />
+
+		<None Include="../../../docs/ico.png" Pack="true" PackagePath="\" />
+
+	</ItemGroup>
+
+	<PropertyGroup>
+		<Version>2023.8.16.1219</Version>
+		<Authors>Andrei Ignat</Authors>
+		<Description>Add Excel export to your WebAPI </Description>
+		<Title>RSCG_WebAPIExports</Title>
+		<PackageId>RSCG_WebAPIExports</PackageId>
+		<PackageTags>C#;.NET;ASP.NET Core;Roslyn;RSCG;Excel</PackageTags>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageIcon>ico.png</PackageIcon>
+		<RepositoryUrl>https://github.com/ignatandrei/RSCG_WebAPIExports</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/ignatandrei/RSCG_WebAPIExports</PackageProjectUrl>
+		<RepositoryType>GIT</RepositoryType>
+		<Copyright>MIT</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<IncludeSymbols>true</IncludeSymbols>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<Deterministic>true</Deterministic>
+		<DebugType>embedded</DebugType>
+
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <NoWarn>1701;1702;</NoWarn>
+	  <WarningsNotAsErrors>NU5128</WarningsNotAsErrors>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <NoWarn>1701;1702;</NoWarn>
+	  <WarningsNotAsErrors>NU5128</WarningsNotAsErrors>
+	</PropertyGroup>
+
+
+	<!--project specific-->
+	<ItemGroup>
+		<PackageReference Include="ArrayToExcel" Version="2.2.2" />
+
+		<PackageReference Include="rscgutils" Version="2023.502.835" OutputItemType="Analyzer" ReferenceOutputAssembly="false" >
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
 		<AdditionalFiles Include="MiddlewareExportToFile.gen.txt" />
 		<AdditionalFiles Include="Extensions.gen.txt" />
 

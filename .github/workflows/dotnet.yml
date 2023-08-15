@@ -30,5 +30,10 @@ jobs:
         cd src
         cd WebAPI2Excel
         dotnet r build
+    - name: pack
+      run: | 
+        cd src
+        cd WebAPI2Excel
+        dotnet r pack
     #- name: Test
     #  run: dotnet test --no-build --verbosity normal

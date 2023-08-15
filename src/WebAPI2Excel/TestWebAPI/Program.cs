@@ -5,14 +5,14 @@ using WebApiExportToFile;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-//WebApiExportToFile.AddExport(builder.Services);
-builder.Services.AddExport();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+// Add services to the container.
+//WebApiExportToFile.AddExport(builder.Services);
+builder.Services.AddExport();
 
 var app = builder.Build();
 app.UseExport();

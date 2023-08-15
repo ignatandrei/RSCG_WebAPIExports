@@ -24,8 +24,8 @@ jobs:
       run: | 
         cd src
         cd WebAPI2Excel
-        dotnet restore
+        dotnet tool restore        
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet r build
     #- name: Test
     #  run: dotnet test --no-build --verbosity normal

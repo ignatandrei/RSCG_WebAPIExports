@@ -19,7 +19,8 @@ public class GenerateExportForWebAPI : IIncrementalGenerator
 
             )
         .Where(static m => m is not null)!
-        .SelectMany((data,_)=>data);
+        .SelectMany((data,_)=>data!);
+
         var compilationAndData
             = context.CompilationProvider.Combine(declarationsControllers.Collect());
 
@@ -73,7 +74,7 @@ public class GenerateExportForWebAPI : IIncrementalGenerator
             else
             {
                 //todo: what I have missed?
-                var x = 1;
+                //var x = 1;
             }
         }
 
@@ -98,7 +99,7 @@ public class GenerateExportForWebAPI : IIncrementalGenerator
                 var info = sem.GetTypeInfo(item!);
                 types.Add(info);
             }
-            var z = 1;
+            //var z = 1;
             //var m = sem.GetSymbolInfo(ret);
             //var type = sem.GetTypeInfo(ret).Type;
             //var x = 1;

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Rewrite;
 namespace WebApiExportToFile;
-
+#nullable enable
 public static partial class Extensions
 {
     static partial  void AddReturnTypesFromGenerator();
@@ -22,3 +22,4 @@ public static partial class Extensions
     }
 }
 
+#nullable disable

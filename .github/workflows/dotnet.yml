@@ -42,7 +42,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: NugetWebApiExport_${{github.run_number}}
-        path: src/WebAPI2Excel/RSCG_APIExport/Nuget
+        path: src/WebAPI2Excel/Nuget
         retention-days: 1
   
     #- name: Test

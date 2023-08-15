@@ -20,12 +20,15 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7.0.x
-    - name: Restore dependencies
+    - name: Restore tool
       run: | 
         cd src
         cd WebAPI2Excel
         dotnet tool restore        
     - name: Build
-      run: dotnet r build
+      run: | 
+        cd src
+        cd WebAPI2Excel
+        dotnet r build
     #- name: Test
     #  run: dotnet test --no-build --verbosity normal

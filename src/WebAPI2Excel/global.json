@@ -1,6 +1,7 @@
 { 
   "scripts": {
-    "build": "dotnet build --configuration Release",
+    "restore": "dotnet restore",
+    "build": "dotnet r restore && dotnet build --configuration Release",
     "test": "dotnet test --configuration Release",
     "ci": "dotnet r build && dotnet r test"
   }

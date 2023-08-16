@@ -76,12 +76,26 @@ public class MiddlewareExportToFile : IMiddleware
     }
     public object[]? StrongDeserialize(string responseContent)
     {
+        System.Diagnostics.Debugger.Break();
         if(types.Count() == 0) throw new Exception("please add some types");
         foreach( var type in types)
         {
             try
             {
-                var data = JsonSerializer.Deserialize(responseContent, type, new JsonSerializerOptions
+                object[]? data;
+                var element= type.GetElementType();
+                if(element!.IsValueType || element! == typeof(string)) 
+                {
+                    dynamic? valueData=JsonSerializer.Deserialize(responseContent, type);
+                    data=new object[valueData!.Length??0];
+                    for (int i = 0; i < valueData!.Length; i++)
+                    {
+                        data[i]= new { val = valueData![i] };
+                    }
+
+                }
+                else
+                    data = JsonSerializer.Deserialize(responseContent, type, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true,
                     TypeInfoResolver = new DefaultJsonTypeInfoResolver
@@ -89,6 +103,7 @@ public class MiddlewareExportToFile : IMiddleware
                         Modifiers = { AddMissingMemberHandling }
                     }
                 }) as object[];
+                
                 return data;
             }
             catch(JsonException)

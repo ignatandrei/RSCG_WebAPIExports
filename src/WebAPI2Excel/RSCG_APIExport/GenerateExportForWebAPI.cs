@@ -1,4 +1,6 @@
-﻿namespace RSCG_APIExport;
+﻿using DocumentFormat.OpenXml.Drawing.Charts;
+
+namespace RSCG_APIExport;
 
 [Generator(LanguageNames.CSharp)]
 public class GenerateExportForWebAPI : IIncrementalGenerator
@@ -61,6 +63,10 @@ public class GenerateExportForWebAPI : IIncrementalGenerator
             yield return ins;
             yield break;
         }
+        if(ret is PredefinedTypeSyntax pds)
+        {
+            yield return ret;
+        }
         if (ret is GenericNameSyntax name)
         {
             if (name.TypeArgumentList.Arguments.Count > 0)
@@ -83,7 +89,7 @@ public class GenerateExportForWebAPI : IIncrementalGenerator
                 //var x = 1;
             }
         }
-
+        
     }
     static string[]? GetSemanticTargetForGeneration(GeneratorSyntaxContext context)
     {

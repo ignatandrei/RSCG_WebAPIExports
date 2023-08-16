@@ -20,6 +20,18 @@ namespace TestWebAPI.Controllers
             _logger = logger;
         }
         [HttpGet]
+        public async Task<IEnumerable<int>> Testint()
+        {
+            await Task.Delay(100);
+            return new int[3] { 1970,4,16 };
+        }
+        [HttpGet]
+        public async Task<IEnumerable<string>> TestString()
+        {
+            await Task.Delay(100);
+            return new string[2] { "Andrei", "Ignat" };
+        }
+        [HttpGet]
         public int Count()
         {
             return 10;
@@ -30,7 +42,7 @@ namespace TestWebAPI.Controllers
             return GetWeatherForecast().ToArray();
         }
         [HttpDelete]
-        public Results<Ok<WeatherForecast[]>,NotFound<string>> TestResults()
+        public Results<Ok<WeatherForecast[]>, NotFound<string>> TestResults()
         {
             var data = GetWeatherForecast().ToArray();
             if ((data?.Length ?? 0) == 0) return TypedResults.NotFound("cannot find");
@@ -41,7 +53,7 @@ namespace TestWebAPI.Controllers
         {
             return new Person() { Id = id, Name = "test" + id };
         }
-        
+
         [HttpPut]
         public ActionResult<WeatherForecast[]> TestActionResult()
         {
@@ -57,7 +69,7 @@ namespace TestWebAPI.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)],
                 NewItem = new WeatherForecast()
                 {
-                    TemperatureC=100
+                    TemperatureC = 100
                 }
             })
             .ToArray();

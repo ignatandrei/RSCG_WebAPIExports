@@ -2,16 +2,28 @@
 
 Add exports to file to WebAPI ( for the moment, just Excel / xlsx)
 
-# Usage
+
+
+## How to use in WebAPI project
+
 
 Add reference to the package in the .csproj
 ```xml
-<PackageReference Include="RSCG_WebAPIExports" Version="2023.8.16.1258" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
+<PackageReference Include="RSCG_WebAPIExports" Version="2023.8.16.1958" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
 <!--
-<PackageReference Include="RSCG_WebAPIExports" Version="2023.8.16.1258" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
+<PackageReference Include="RSCG_WebAPIExports" Version="2023.8.16.1958" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
 <PackageReference Include="ArrayToExcel" Version="2.2.2" />
 -->
 ```
+or
+```xml
+<PackageReference Include="RSCG_WebAPIExports" Version="2023.8.16.1958" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
+<!--
+<PackageReference Include="RSCG_WebAPIExports" Version="2023.8.16.1958" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
+<PackageReference Include="ArrayToExcel" Version="2.2.2" />
+-->
+```
+
 
 Then in the WebAPI add
 ```csharp
@@ -25,6 +37,28 @@ app.UseExport();
 
 ```
 
-Add to any url : .xlsx ( e.g. for /WeatherForecast put /WeatherForecast.xlsx ) and the excel will be 
+Add to any url : .xlsx ( e.g. 
 
-downloaded
+for /WeatherForecast put /WeatherForecast.xlsx 
+
+for /WeatherForecast/GetPerson?id=23 put /WeatherForecast/GetPerson.xlsx?id=23
+
+) 
+
+and the excel will be downloaded
+
+## Examples
+
+JSON value type array: 
+https://tiltwebapp.azurewebsites.net/api/PublicTILTs/PublicTiltsURL
+
+
+Excel:
+https://tiltwebapp.azurewebsites.net/api/PublicTILTs/PublicTiltsURL.xlsx
+
+
+JSON object array:
+https://tiltwebapp.azurewebsites.net/api/PublicTILTs/LatestTILTs/ignatandrei/10
+
+Excel:
+https://tiltwebapp.azurewebsites.net/api/PublicTILTs/LatestTILTs/ignatandrei/10.xlsx

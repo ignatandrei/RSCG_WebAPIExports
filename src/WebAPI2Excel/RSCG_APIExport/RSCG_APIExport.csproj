@@ -32,7 +32,7 @@
 	</ItemGroup>
 
 	<PropertyGroup>
-		<Version>2023.8.16.1258</Version>
+		<Version>2023.8.16.1958</Version>
 		<Authors>Andrei Ignat</Authors>
 		<Description>Add Excel export to your WebAPI </Description>
 		<Title>RSCG_WebAPIExports</Title>

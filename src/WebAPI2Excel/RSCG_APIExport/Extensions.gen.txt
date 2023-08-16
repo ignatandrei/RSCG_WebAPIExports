@@ -6,11 +6,10 @@ public static partial class Extensions
     static partial  void AddReturnTypesFromGenerator();
     public static IServiceCollection AddExport(this IServiceCollection services, params Type[]? typesReturnedByActions)
     {
-        AddReturnTypesFromGenerator();
-        //MiddlewareExportToFile.AddReturnType(typeof(Person[]));
-        //MiddlewareExportToFile.AddReturnType(typeof(WeatherForecast[]));
         MiddlewareExportToFile.AddReturnTypes(typesReturnedByActions);
-
+        MiddlewareExportToFile.AddReturnType(typeof(System.Collections.Generic.Dictionary<string,object>[]));
+        AddReturnTypesFromGenerator();
+        
         return services.AddSingleton<MiddlewareExportToFile>();
     }
     public static IApplicationBuilder UseExport(this IApplicationBuilder app)

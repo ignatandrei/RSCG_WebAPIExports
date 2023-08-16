@@ -69,17 +69,19 @@ public class MiddlewareExportToFile : IMiddleware
                 {
                     cwt.Remove(obj);
                     var missing = dict.Count;
-                    if(missing>5)//TODO: throw the exception and just find the minimum
+                    //if(missing>5)//TODO: throw the exception and just find the minimum
                     throw new JsonException($"JSON properties {String.Join(", ", dict.Keys)} " +
                         $"could not bind to any members of type {typeInfo.Type}");
                 }
             };
         }
     }
-    public object[]? StrongDeserialize(string responseContent)
+    public object[]? StrongDeserializeArray(string responseContent)
     {
-        System.Diagnostics.Debugger.Break();
+        //System.Diagnostics.Debugger.Break();
+
         if(types.Count() == 0) throw new Exception("please add some types");
+        
         foreach( var type in types)
         {
             try
@@ -120,6 +122,8 @@ public class MiddlewareExportToFile : IMiddleware
     }
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
+        //System.Diagnostics.Debugger.Break();
+
         if (!ShouldIntercept(context))
         {
             await next(context);
@@ -136,10 +140,16 @@ public class MiddlewareExportToFile : IMiddleware
         memoryStream.Seek(0, SeekOrigin.Begin);
         var responseContent = await new StreamReader(memoryStream).ReadToEndAsync();
         context.Response.Body = originalResponseBody;
-
-        var data = StrongDeserialize(responseContent);
+        object?[]? data=null;
+        if(responseContent.StartsWith("["))
+            data = StrongDeserializeArray(responseContent);
+        if(responseContent.StartsWith("{"))
+            data =new object?[1]{
+            JsonSerializer.Deserialize(responseContent, typeof(System.Collections.Generic.Dictionary<string,object>))
+            }
+            ;
         ArgumentNullException.ThrowIfNull(data);
-        using var excelStream = data.ToExcelStream();
+        using var excelStream = data!.ToExcelStream();
         await excelStream.CopyToAsync(context.Response.Body);
 
         // No need to call the next middleware since the generated content has been sent

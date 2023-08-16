@@ -106,7 +106,7 @@ public class MiddlewareExportToFile : IMiddleware
                 
                 return data;
             }
-            catch(JsonException)
+            catch(Exception)
             {
                 //do nothing 
                 

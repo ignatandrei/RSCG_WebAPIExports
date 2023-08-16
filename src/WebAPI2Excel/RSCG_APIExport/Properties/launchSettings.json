@@ -3,6 +3,10 @@
     "DebugWebAPI": {
       "commandName": "DebugRoslynComponent",
       "targetProject": "..\\TestWebAPI\\TestWebAPI.csproj"
+    },
+    "Profile 1": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\..\\..\\..\\RSCG_Examples\\v2\\rscg_examples\\RSCG_WebAPIExports\\src\\RSCG_WebAPIExportsDemo\\RSCG_WebAPIExportsDemo\\RSCG_WebAPIExportsDemo.csproj"
     }
   }
 }

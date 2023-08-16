@@ -11,16 +11,16 @@ Add exports to file to WebAPI ( for the moment, just Excel / xlsx)
 
 Add reference to the package in the .csproj
 ```xml
-<PackageReference Include="RSCG_WebAPIExports" Version="2023.8.16.1254" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
+<PackageReference Include="RSCG_WebAPIExports" Version="2023.8.16.1255" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
 <!--
-<PackageReference Include="RSCG_WebAPIExports" Version="2023.8.16.1254" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
+<PackageReference Include="RSCG_WebAPIExports" Version="2023.8.16.1255" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
 <PackageReference Include="ArrayToExcel" Version="2.2.2" />
 -->
 ```
 
 Then in the WebAPI add
 ```csharp
-using TestWebAPI;
+using WebApiExportToFile;
 //code
 // Add services to the container.
 //WebApiExportToFile.AddExport(builder.Services);

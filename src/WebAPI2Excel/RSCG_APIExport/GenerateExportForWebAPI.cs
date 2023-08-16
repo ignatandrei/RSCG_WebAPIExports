@@ -50,9 +50,15 @@ public class GenerateExportForWebAPI : IIncrementalGenerator
 
     static IEnumerable<TypeSyntax?> GetTypeRecursive(TypeSyntax ret)
     {
+        
         if (ret is ArrayTypeSyntax ats)
         {
             yield return ats.ElementType;    
+            yield break;
+        }
+        if (ret is IdentifierNameSyntax ins)
+        {
+            yield return ins;
             yield break;
         }
         if (ret is GenericNameSyntax name)

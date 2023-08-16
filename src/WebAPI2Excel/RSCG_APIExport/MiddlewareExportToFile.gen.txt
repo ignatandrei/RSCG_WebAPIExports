@@ -68,6 +68,8 @@ public class MiddlewareExportToFile : IMiddleware
                 if (cwt.TryGetValue(obj, out Dictionary<string, object>? dict))
                 {
                     cwt.Remove(obj);
+                    var missing = dict.Count;
+                    if(missing>5)//TODO: throw the exception and just find the minimum
                     throw new JsonException($"JSON properties {String.Join(", ", dict.Keys)} " +
                         $"could not bind to any members of type {typeInfo.Type}");
                 }

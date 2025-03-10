@@ -26,6 +26,13 @@ namespace TestWebAPI.Controllers
             return new int[3] { 1970,4,16 };
         }
         [HttpGet]
+        private async Task<IEnumerable<string>> TestMyString()
+        {
+            await Task.Delay(100);
+            return new string[2] { "Andrei", "Ignat" };
+        }
+
+        [HttpGet]
         public async Task<IEnumerable<string>> TestString()
         {
             await Task.Delay(100);

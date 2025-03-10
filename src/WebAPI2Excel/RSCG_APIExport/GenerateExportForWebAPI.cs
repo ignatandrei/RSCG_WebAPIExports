@@ -118,7 +118,8 @@ public class GenerateExportForWebAPI : IIncrementalGenerator
         }
         return types.Select(t => t.Type)
             .Where(it=>it!=null)
-            .Select(t=>t?.OriginalDefinition?.ToDisplayString()??"")
+            //.Select(t=>t?.OriginalDefinition?.ToDisplayString()??"")
+            .Select(t => t!.ToDisplayString())
             .Where (it=>!string.IsNullOrWhiteSpace(it))
             .ToArray();
         //var s = types.First();

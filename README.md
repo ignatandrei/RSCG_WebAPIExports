@@ -11,17 +11,17 @@ Add exports to file to WebAPI ( for the moment, just Excel / xlsx)
 
 Add reference to the package in the .csproj
 ```xml
-<PackageReference Include="RSCG_WebAPIExports" Version="2023.8.16.1958" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
+<PackageReference Include="RSCG_WebAPIExports" Version="2025.8.310.2000" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
 <!--
-<PackageReference Include="RSCG_WebAPIExports" Version="2023.8.16.1958" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
+<PackageReference Include="RSCG_WebAPIExports" Version="2025.8.310.2000" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
 <PackageReference Include="ArrayToExcel" Version="2.2.2" />
 -->
 ```
 or
 ```xml
-<PackageReference Include="RSCG_WebAPIExports" Version="2023.8.16.1958" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
+<PackageReference Include="RSCG_WebAPIExports" Version="2025.8.310.2000" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
 <!--
-<PackageReference Include="RSCG_WebAPIExports" Version="2023.8.16.1958" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
+<PackageReference Include="RSCG_WebAPIExports" Version="2025.8.310.2000" OutputItemType="Analyzer" ReferenceOutputAssembly="true"  />
 <PackageReference Include="ArrayToExcel" Version="2.2.2" />
 -->
 ```
@@ -39,7 +39,7 @@ app.UseExport();
 
 ```
 
-Add to any url : .xlsx ( e.g. 
+Add to any url : .xlsx or .csv ( e.g. 
 
 for /WeatherForecast put /WeatherForecast.xlsx 
 

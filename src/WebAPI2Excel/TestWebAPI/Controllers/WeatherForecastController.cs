@@ -31,7 +31,19 @@ namespace TestWebAPI.Controllers
             await Task.Delay(100);
             return new string[2] { "Andrei", "Ignat" };
         }
-
+        [HttpGet]
+        public async Task<Dictionary<string, object>[]> TestDictionary()
+        {
+            await Task.Delay(100);
+            var ret= new Dictionary<string, object>[2];
+            ret[0] = new Dictionary<string, object>();
+            ret[0].Add  ("FirstName", "Andrei");
+            ret[0].Add("ID", 1);
+            ret[1] = new Dictionary<string, object>();
+            ret[1].Add("FirstName", "Ignat");
+            ret[1].Add("ID", 2);
+            return ret; 
+        }
         [HttpGet]
         public async Task<IEnumerable<string>> TestString()
         {

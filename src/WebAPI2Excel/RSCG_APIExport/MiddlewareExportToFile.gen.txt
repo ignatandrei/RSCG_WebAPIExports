@@ -11,7 +11,7 @@ namespace WebApiExportToFile;
 public class MiddlewareExportToFile : IMiddleware
 {
     private static List<Type> types = new(); 
-    static readonly string[] Extensions = new string[1] { ".xlsx" };
+    static readonly string[] Extensions = new string[2] { ".xlsx",".csv" };
     static string key = "Export";
     public static void AddReturnTypes(params Type[]? typesReturnedByActions)
     {
@@ -149,9 +149,35 @@ public class MiddlewareExportToFile : IMiddleware
             }
             ;
         ArgumentNullException.ThrowIfNull(data);
-        using var excelStream = data!.ToExcelStream();
-        await excelStream.CopyToAsync(context.Response.Body);
-
+        switch(ext)
+        {
+            case ".xlsx":{
+                using var excelStream = data!.ToExcelStream();
+                await excelStream.CopyToAsync(context.Response.Body);
+                break;
+                }
+            case ".csv":{
+                string csv="";
+                foreach(var item in data)
+                {
+                    if(item is System.Collections.Generic.Dictionary<string,object> dict)
+                    {    
+                        csv += string.Join(",", dict.Values);
+                    }
+                    else
+                    {
+                        csv += string.Join(",", item?.ToString()??"");
+                    }
+                    csv += Environment.NewLine;
+                    
+                }
+                await context.Response.WriteAsync(csv);
+                break;
+                }
+            default:
+                throw new Exception("extension not handled "+ext);
+                
+        };
         // No need to call the next middleware since the generated content has been sent
         return;
     }

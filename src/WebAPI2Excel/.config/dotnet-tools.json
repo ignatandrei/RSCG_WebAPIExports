@@ -7,14 +7,14 @@
       "commands": [
         "pwsh"
       ],
-      "rollForward": false
+      "rollForward": true
     },
     "run-script": {
       "version": "0.6.0",
       "commands": [
         "r"
       ],
-      "rollForward": false
+      "rollForward": true
     }
   }
 }
